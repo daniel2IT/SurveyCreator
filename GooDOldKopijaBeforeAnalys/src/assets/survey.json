@@ -1,0 +1,40 @@
+{
+    "pages": [
+     {
+      "name": "page1",
+      "elements": [
+       {
+        "type": "matrixdropdown",
+        "name": "question1",
+        "vplusPopupLibelle": null,
+        "columns": [
+         {
+          "name": "Colonne 1",
+          "vplusPopupLibelle": null
+         },
+         {
+          "name": "Colonne 2",
+          "vplusPopupLibelle": null
+         },
+         {
+          "name": "Colonne 3",
+          "vplusPopupLibelle": null
+         }
+        ],
+        "choices": [
+         1,
+         2,
+         3,
+         4,
+         5
+        ],
+        "rows": [
+         "Ligne 1",
+         "Ligne 2"
+        ]
+       }
+      ],
+      "vplusPopupLibelle": null
+     }
+    ]
+   }

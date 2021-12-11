@@ -1,0 +1,52 @@
+﻿@*@model SurveyApplication.Models.CompletedSurvey*@
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>View survey results of other people in read-only/display mode, jQuery Survey Library Example</title>
+        <meta name="viewport" content="width=device-width" />
+        <script src="https://unpkg.com/jquery"></script>
+        <script src="https://unpkg.com/survey-jquery@1.9.0/survey.jquery.min.js"></script>
+        <link href="https://unpkg.com/survey-core@1.9.0/modern.min.css" type="text/css" rel="stylesheet" />
+        <link rel="stylesheet" href="./index.css">
+    </head>
+    <body>
+
+        <br>
+
+        <a href='@Url.Action("Index", "Analyser")' class="btn btn-primary">Back to List</a>
+
+        <hr />
+
+        <div id="surveyElement" style="display:inline-block;width:100%;"></div>
+        <div id="surveyResult"></div>
+
+
+        <script type="text/javascript">
+
+          Survey.StylesManager.applyTheme("modern");
+
+          var json =  @Html.Raw(Json.Encode(Model.Code));
+
+            window.survey = new Survey.Model(json);
+
+            survey
+                .onComplete
+                .add(function (sender) {
+                    document
+                        .querySelector('#surveyResult')
+                        .textContent = "Result JSON:\n" + JSON.stringify(sender.data, null, 3);
+                });
+
+            survey.data = @Html.Raw(Model.ResultCode);
+            survey.mode = 'display';
+
+            $("#surveyElement").Survey({ model: survey });
+        </script>
+    </body>
+    </html>

@@ -1,0 +1,88 @@
+﻿@model IEnumerable<SurveyApplication.Models.CompletedSurvey>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SurveyJS Analytics Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://surveyjs.azureedge.net/1.8.9/survey.css" type="text/css" rel="stylesheet" />
+    <link href="https://surveyjs.azureedge.net/1.8.9/survey.analytics.css" rel="stylesheet" />
+    <script src="https://surveyjs.azureedge.net/1.8.9/survey.core.js"></script>
+    <script src="https://cdn.rawgit.com/inexorabletash/polyfill/master/typedarray.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://unpkg.com/wordcloud@1.2.2/src/wordcloud2.js"></script>
+    <script src="https://surveyjs.azureedge.net/1.7.20/survey.analytics.js"></script>
+</head>
+<body>
+
+
+    <br>
+
+    <a href='@Url.Action("Index", "OverallAnalysis")' class="btn btn-primary">Back to List</a>
+
+    <hr />
+
+    <div id="surveyAnalyticsDomNode"></div>
+
+    <script type="text/javascript">
+
+          Survey
+    .StylesManager
+    .applyTheme("default");
+
+
+        var json =  JSON.parse(@Html.Raw(Json.Encode(Model.First().Code)));
+
+        window.survey = new Survey.SurveyModel(json);
+
+        const listOfResult = [];
+
+        var went = "false";
+
+         @foreach (var item in Model)
+         {
+             if (item.ResultCode != null)
+             {
+             @:listOfResult.push('@Html.Raw(HttpUtility.JavaScriptStringEncode(item.ResultCode))');
+             @:this.went = "true";
+             }
+         }
+
+        if (went == "true") {
+
+            var data = [];
+
+            listOfResult.forEach(function (part, index) {
+                listOfResult[index] = JSON.parse(listOfResult[index]);
+            });
+
+            data = listOfResult;
+        }
+        else {
+             var data = [];
+        }
+
+
+        var normalizedData = data.map(function (item) {
+            survey.getAllQuestions().forEach(function (q) {
+                if (!item[q.name]) {
+                    item[q.name] = "";
+                }
+            });
+            return item;
+        });
+
+        var visPanel = new SurveyAnalytics.VisualizationPanel(document.getElementById("surveyAnalyticsDomNode"), survey.getAllQuestions(), normalizedData);
+        visPanel.render();
+    </script>
+</body>
+</html>

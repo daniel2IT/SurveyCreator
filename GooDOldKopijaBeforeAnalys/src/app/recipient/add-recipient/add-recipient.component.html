@@ -1,0 +1,46 @@
+<div class="container">  
+    
+  <h1> Add Recipient </h1>  
+    
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">  
+      
+    
+<div class="splitEmailSection">
+  <div class="centered">
+    <p>  
+      <label for="name">E-Mail Username:</label>  
+      <input type="text" id="emailName" name="name" class="form-control" value="areszka789@gmail.com">  
+    </p> 
+  </div>
+    
+  <div class="centered">
+    <p>  
+      <label for="name">E-Mail Password:</label>  
+      <input type="password"  id="emailPassword" name="name" class="form-control" value="Qwertas123">  
+    </p> 
+  </div>
+</div> 
+    
+    <table class="table table-bordered" formArrayName="recipients">  
+      <tr>  
+        <th colspan="2">Add Multiple Recipient:</th>  
+        <th width="150px"><button type="button" (click)="addRecipient()" class="btn btn-primary">Add More</button></th>  
+      </tr>  
+      <tr *ngFor="let recipient of recipients().controls; let i=index" [formGroupName]="i">  
+        <td>  
+            Recipient:  
+            <input type="text" formControlName="qty" class="form-control">  
+        </td>  
+        <td>  
+            <button (click)="removeRecipient(i)" class="btn btn-danger">Remove</button>  
+        </td>  
+      </tr>  
+    </table>  
+     
+    <button type="submit" class="btn btn-success">
+      Submit
+    </button>  
+  </form>  
+</div>  
+
+<router-outlet></router-outlet>
