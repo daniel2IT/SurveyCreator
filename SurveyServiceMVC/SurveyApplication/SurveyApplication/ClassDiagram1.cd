@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="SurveyApplication.ViewModels.AnalyseListViewModel">
+    <Position X="18.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAgAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\AnalyseListViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SurveyApplication.Repository.SurveyRepository" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACCAAAAAAAAAAAEAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repository\SurveyRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Bottom" Position="0.468" />
+  </Class>
+  <Class Name="SurveyApplication.Models.Survey">
+    <Position X="7.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAgAAQAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Models\Survey.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SurveyApplication.Models.Recipient">
+    <Position X="14.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQACAAIAIAAAAAAACAAAEAAhAAAAAAQAAAAAA=</HashCode>
+      <FileName>Models\Recipient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SurveyApplication.Models.CompletedSurvey">
+    <Position X="12" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAgAAQAAAAAAACAAAAAQAAgAAA=</HashCode>
+      <FileName>Models\CompletedSurvey.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SurveyApplication.Helper.HelperClass">
+    <Position X="23.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAABAABAAAAA=</HashCode>
+      <FileName>Helper\HelperClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SurveyApplication.Controllers.SurveyController">
+    <Position X="4" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\SurveyController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_repository" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SurveyApplication.Controllers.RecipientController">
+    <Position X="6.5" Y="11" Width="1.5" />
+    <AssociationLine Name="recipients" Type="System.Collections.Generic.List&lt;T&gt;" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8" Y="11.811" />
+        <Point X="8.711" Y="11.811" />
+        <Point X="8.711" Y="13.125" />
+        <Point X="10" Y="13.125" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAABAAAAAAAAACAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\RecipientController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_repository" />
+      <Field Name="recipients" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SurveyApplication.Controllers.OverallAnalysisController">
+    <Position X="11" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\OverallAnalysisController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SurveyApplication.Controllers.HomeController">
+    <Position X="6.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEACAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SurveyApplication.Controllers.CompleteSurveyController">
+    <Position X="8.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAgAAAAAAAACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\CompleteSurveyController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SurveyApplication.Controllers.AnalyserController">
+    <Position X="4.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\AnalyserController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SurveyApplication.NinjectResolver" BaseTypeListCollapsed="true">
+    <Position X="21" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAACgIAAAAAAAAAAAAAAAAIAAAAAEI=</HashCode>
+      <FileName>App_Start\NinjectResolver.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="kernel" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SurveyApplication.RouteConfig">
+    <Position X="25.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\RouteConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SurveyApplication.FilterConfig">
+    <Position X="16.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\FilterConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SurveyApplication.BundleConfig">
+    <Position X="5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\BundleConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Web.Mvc.Controller">
+    <Position X="5.25" Y="6.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Object">
+    <Position X="15.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Web.Http.ApiController" Collapsed="true">
+    <Position X="4.25" Y="11" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Collections.Generic.List&lt;T&gt;" Collapsed="true">
+    <Position X="10" Y="12.75" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.1" />
+  </Class>
+  <Interface Name="System.Web.Http.Dependencies.IDependencyScope" Collapsed="true">
+    <Position X="13.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="System.IDisposable">
+    <Position X="16.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="System.Web.Http.Dependencies.IDependencyResolver">
+    <Position X="12.25" Y="11.5" Width="4" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="Ninject.IKernel" Collapsed="true">
+    <Position X="19.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="SurveyApplication.Interfaces.ISurveyRepository" Collapsed="true">
+    <Position X="7" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACCAAAAAAAAAAAEAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ISurveyRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

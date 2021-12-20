@@ -57,6 +57,7 @@ namespace SurveyApplication.Controllers
         }
 
 
+        public List<Recipient> recipients = new List<Recipient>();
 
         // POST api/values
         [HttpPost]

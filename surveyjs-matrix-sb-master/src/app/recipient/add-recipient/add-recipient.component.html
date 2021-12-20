@@ -24,7 +24,10 @@
     <table class="table table-bordered" formArrayName="recipients">  
       <tr>  
         <th colspan="2">Add Multiple Recipient:</th>  
-        <th width="150px"><button type="button" (click)="addRecipient()" class="btn btn-primary">Add More</button></th>  
+        <th width="150px"><button type="button" (click)="addRecipient()" class="btn btn-primary">Add More</button>
+          <input type="file" class="btn btn-info" (change)="Upload($event)"  style="display: inline-block;" placeholder="Upload file" accept=".xlsx" >
+        
+        </th>  
       </tr>  
       <tr *ngFor="let recipient of recipients().controls; let i=index" [formGroupName]="i">  
         <td>  
@@ -33,14 +36,21 @@
         </td>  
         <td>  
             <button (click)="removeRecipient(i)" class="btn btn-danger">Remove</button>  
-        </td>  
+        </td>
+        <td>
+      
+        </td>
       </tr>  
     </table>  
+
+
      
     <button type="submit" class="btn btn-success">
       Submit
     </button>  
   </form>  
 </div>  
+
+
 
 <router-outlet></router-outlet>

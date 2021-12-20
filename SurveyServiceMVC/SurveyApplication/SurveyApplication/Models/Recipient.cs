@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SurveyApplication.Controllers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Web;
 
 namespace SurveyApplication.Models
 {
-    public class Recipient
+    public class Recipient 
     {
         // Recipient section
         // new_recipientid
@@ -33,6 +34,11 @@ namespace SurveyApplication.Models
         // Additional Email LogIns
         public string EmailLogIn { get; set; }
         public string EmailPassword { get; set; }
+
+
+        // Process
+
+        public Boolean ProcessSending { get; set; } 
 
     }
 }

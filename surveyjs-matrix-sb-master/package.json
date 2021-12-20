@@ -22,14 +22,15 @@
     "@angular/platform-browser-dynamic": "^7.2.15",
     "@angular/platform-server": "^7.2.15",
     "@angular/router": "^7.2.15",
+    "@types/xlsx": "^0.0.36",
     "ace-builds": "^1.4.12",
     "acorn": "^6.0.5",
     "bootstrap": "^3.3.6",
     "ckeditor": "^4.11.4",
     "core-js": "^2.5.4",
     "jquery": "^3.5.1",
-    "jspdf1": "npm:jspdf@1.5.3",
     "jspdf-autotable": "3.0.10",
+    "jspdf1": "npm:jspdf@1.5.3",
     "survey-analytics": "1.8.52",
     "survey-angular": "1.8.52",
     "survey-creator": "1.8.52",
@@ -37,6 +38,7 @@
     "survey-knockout": "1.8.52",
     "survey-pdf": "1.8.52",
     "surveyjs-widgets": "1.8.52",
+    "ts-xlsx": "^0.0.11",
     "tslib": "^1.13.0",
     "xlsx": "^0.16.6",
     "zone.js": "0.10.2"
@@ -63,6 +65,6 @@
     "style-loader": "^0.16.1",
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
-    "typescript": "3.2.4"
+    "typescript": "^3.1.1"
   }
 }

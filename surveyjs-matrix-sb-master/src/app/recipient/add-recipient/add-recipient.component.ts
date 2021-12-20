@@ -3,12 +3,86 @@ import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms'
 import { SharedService } from 'app/services/shared.service';
 import { DataService } from 'app/services/data.service';
 
+
+// Excel
+import * as XLSX from 'ts-xlsx';
+
+
+const input = document.getElementById('input')
+
 @Component({
   selector: 'app-add-recipient',
   templateUrl: './add-recipient.component.html',
   styleUrls: ['./add-recipient.component.css']
 })
-export class AddRecipientComponent  {  
+
+export class AddRecipientComponent  {
+
+
+  ///EXCEL
+
+
+
+
+//inside export class
+
+arrayBuffer:any;
+file:File;
+thisIsTestArray = new Array();
+
+incomingfile(event) 
+  {
+  }
+
+ Upload(event) {
+
+  this.file= event.target.files[0]; 
+
+
+
+
+     // If we Have Excel File
+     if(this.file != null){
+      let fileReader = new FileReader();
+      fileReader.onload = (e) => {
+          this.arrayBuffer = fileReader.result;
+          var data = new Uint8Array(this.arrayBuffer);
+          var arr = new Array();
+          for(var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
+          var bstr = arr.join("");
+          var workbook = XLSX.read(bstr, {type:"binary"});
+          var first_sheet_name = workbook.SheetNames[0];
+          var worksheet = workbook.Sheets[first_sheet_name];
+        
+          this.thisIsTestArray = XLSX.utils.sheet_to_json(worksheet,{raw:true});
+
+          this.thisIsTestArray.forEach(function (entry) {
+           delete entry['List_1'];
+         });
+
+         console.log(this.thisIsTestArray);
+
+         for (let entry of  this.thisIsTestArray) {
+          console.log(entry); // 1, "string", false
+         this.recipients().push(this.newRecipientFromArray(entry['List'])); 
+      }
+          
+      }
+      fileReader.readAsArrayBuffer(this.file);
+    }
+   else{
+     alert("Please Upload Excel File First");
+   }
+   
+        
+
+        
+}
+
+
+
+
+  ////
   name = 'Angular';  
     
   productForm: FormGroup;  
@@ -47,6 +121,12 @@ export class AddRecipientComponent  {
       qty: '' 
     })  
   }  
+
+  newRecipientFromArray(data: any): FormGroup {  
+    return this.fb.group({  
+      qty: data 
+    })  
+  }  
      
   addRecipient() {  
    this.recipients().push(this.newRecipient());  
@@ -57,6 +137,8 @@ export class AddRecipientComponent  {
   }  
      
   onSubmit() { 
+
+ 
 
     // Email LogIns.
    var strLogIn = (<HTMLInputElement>document.getElementById("emailName")).value; 
@@ -152,7 +234,6 @@ else{
 
               this.service.addRecipient(val).subscribe(res=>
               {
-                alert(res.toString());
                 console.log(res.toString())
               });
           }
@@ -162,5 +243,12 @@ else{
     }
     }
     }
+
+    const tatalLengthRecipient = this.recipients().length;
+
+    for (let i = 0; i < tatalLengthRecipient; i++) {
+      this.recipients().removeAt(0);
+    }
+
   }
 }  

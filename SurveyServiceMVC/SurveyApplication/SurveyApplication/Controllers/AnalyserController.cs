@@ -14,6 +14,7 @@ namespace SurveyApplication.Controllers
 {
     public class AnalyserController : Controller
     {
+
         // GET: Analyser
         public ActionResult Index()
         {
