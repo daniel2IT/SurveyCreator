@@ -19,12 +19,6 @@ const input = document.getElementById('input')
 export class AddRecipientComponent  {
 
 
-  ///EXCEL
-
-
-
-
-//inside export class
 
 arrayBuffer:any;
 file:File;
@@ -93,6 +87,10 @@ incomingfile(event)
  messageCode: any;
  SurveyTitle: any;
 
+ CreatedSurveyId: any;
+
+ ReadyJson: any;
+
  TitleExist:boolean = false;
  ////////////
 
@@ -137,8 +135,6 @@ incomingfile(event)
   }  
      
   onSubmit() { 
-
- 
 
     // Email LogIns.
    var strLogIn = (<HTMLInputElement>document.getElementById("emailName")).value; 
@@ -190,13 +186,26 @@ else{
     Object.keys(this.productForm.controls).forEach(key => {
        
           if(key === "recipients"){
-            console.log("Key " + key);  
+          
 
             const recipients7 =this.productForm.value.recipients;
 
 
+
             for(let i=0; i<recipients7.length; i++){
               console.log("(recipients7[i] " + recipients7[i].qty); //use i instead of 0
+
+
+                   // if message surveyID empty not saved than
+
+            if(this.message.SurveyId){
+
+            }
+            else{
+              this.message.SurveyId = this.CreatedSurveyId;
+            }
+
+
 
 
             if(this.message.Code){
@@ -215,6 +224,9 @@ else{
 
                 this.messageCode = JSON.stringify(this.message);
 
+                 this.messageCode.replace(/\\/g, '');
+
+
                 var val = 
                 {
                   Email:recipients7[i].qty,
@@ -232,10 +244,8 @@ else{
                     return;
             }
 
-              this.service.addRecipient(val).subscribe(res=>
-              {
-                console.log(res.toString())
-              });
+
+              this.service.addRecipient(val).subscribe();
           }
         }
 

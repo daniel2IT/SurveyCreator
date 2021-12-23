@@ -14,15 +14,25 @@ import { ShowSurveyComponent } from "./survey/show-survey/show-survey.component"
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { AnalyticsDatatablesPage } from "./pages/analytics.datatables.page";
+
+import { SurveyAnalyticsDatatablesComponent } from "./components/survey.analytics.datatables";
+
+
+
+
+
 
 @NgModule({
   declarations: [
+    SurveyAnalyticsDatatablesComponent,
     ShowSurveyComponent,
     AddRecipientComponent,
     AppComponent,
     HomePage,
     SurveyCreatorComponent,
-    CreatorPage
+    CreatorPage,
+    AnalyticsDatatablesPage
   ],
   imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule, ReactiveFormsModule],
   providers: [ SharedService ],

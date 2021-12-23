@@ -34,6 +34,37 @@ namespace SurveyApplication.Helper
                
             return service.RetrieveMultiple(query);
         }
+
+        // Check survey by this code
+        public static EntityCollection GetSurveyByCodeEntityCollection(CrmServiceClient service, string code)
+        {
+            List<string> queryCollumns = new List<string>();
+
+            // queryCollumns.Add("new_name");
+            //queryCollumns.Add("new_code");
+
+            queryCollumns.Add("new_surveyid");
+            queryCollumns.Add("new_code");
+
+            QueryExpression query = new QueryExpression("new_survey");
+
+
+            // Fill Data To Query
+            query.ColumnSet.AddColumns(queryCollumns.ToArray());
+
+
+
+            // Criteria 
+            query.Criteria.AddCondition("new_code", ConditionOperator.Equal, Convert.ToString(code));
+
+            return service.RetrieveMultiple(query);
+        }
+
+
+
+
+
+
         public static bool IsValidEmail(string email)
         {
             if (email.Trim().EndsWith("."))

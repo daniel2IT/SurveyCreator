@@ -79,10 +79,7 @@ export class ShowSurveyComponent implements OnInit {
 result;
 savePDF(item) {
 
-
   this.survey = item;
-
-
 
 
   var options = {
@@ -120,10 +117,25 @@ savePDF(item) {
 }
 
 
+/// Export Excel
+saveExcel(item) {
+
+
+  this.survey = item;
+
+
+  // Downlaod Excel Document
+  this.document.location.href = 'https://localhost:44341/OverallAnalysis/ExportExcel/' + this.survey.SurveyId;
+
+
+
+}
+
 // Redirect To Analysis
 goToUrl(item): void {
 
   this.survey = item;
+
 
   this.document.location.href = 'https://localhost:44341/OverallAnalysis/Details/' + this.survey.SurveyId;
 }

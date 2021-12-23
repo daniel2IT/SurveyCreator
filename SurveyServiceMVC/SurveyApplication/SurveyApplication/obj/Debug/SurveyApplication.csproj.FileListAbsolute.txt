@@ -414,6 +414,7 @@ C:\Program Files (x86)\BaigiamasisDarbas\SurveyCreator\SurveyServiceMVC\SurveyAp
 C:\Program Files (x86)\BaigiamasisDarbas\SurveyCreator\SurveyServiceMVC\SurveyApplication\SurveyApplication\bin\Newtonsoft.Json.dll
 C:\Program Files (x86)\BaigiamasisDarbas\SurveyCreator\SurveyServiceMVC\SurveyApplication\SurveyApplication\bin\Ninject.dll
 C:\Program Files (x86)\BaigiamasisDarbas\SurveyCreator\SurveyServiceMVC\SurveyApplication\SurveyApplication\bin\Ninject.Extensions.ChildKernel.dll
+C:\Program Files (x86)\BaigiamasisDarbas\SurveyCreator\SurveyServiceMVC\SurveyApplication\SurveyApplication\bin\PlantUml.Reflector.dll
 C:\Program Files (x86)\BaigiamasisDarbas\SurveyCreator\SurveyServiceMVC\SurveyApplication\SurveyApplication\bin\System.Buffers.dll
 C:\Program Files (x86)\BaigiamasisDarbas\SurveyCreator\SurveyServiceMVC\SurveyApplication\SurveyApplication\bin\System.ComponentModel.Annotations.dll
 C:\Program Files (x86)\BaigiamasisDarbas\SurveyCreator\SurveyServiceMVC\SurveyApplication\SurveyApplication\bin\System.Memory.dll
@@ -479,9 +480,8 @@ C:\Program Files (x86)\BaigiamasisDarbas\SurveyCreator\SurveyServiceMVC\SurveyAp
 C:\Program Files (x86)\BaigiamasisDarbas\SurveyCreator\SurveyServiceMVC\SurveyApplication\SurveyApplication\bin\System.Web.Http.xml
 C:\Program Files (x86)\BaigiamasisDarbas\SurveyCreator\SurveyServiceMVC\SurveyApplication\SurveyApplication\bin\System.Web.Http.WebHost.xml
 C:\Program Files (x86)\BaigiamasisDarbas\SurveyCreator\SurveyServiceMVC\SurveyApplication\SurveyApplication\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Program Files (x86)\BaigiamasisDarbas\SurveyCreator\SurveyServiceMVC\SurveyApplication\SurveyApplication\obj\Debug\SurveyApplication.csproj.AssemblyReference.cache
 C:\Program Files (x86)\BaigiamasisDarbas\SurveyCreator\SurveyServiceMVC\SurveyApplication\SurveyApplication\obj\Debug\SurveyApplication.csproj.CoreCompileInputs.cache
 C:\Program Files (x86)\BaigiamasisDarbas\SurveyCreator\SurveyServiceMVC\SurveyApplication\SurveyApplication\obj\Debug\SurveyApplication.csproj.CopyComplete
 C:\Program Files (x86)\BaigiamasisDarbas\SurveyCreator\SurveyServiceMVC\SurveyApplication\SurveyApplication\obj\Debug\SurveyApplication.dll
 C:\Program Files (x86)\BaigiamasisDarbas\SurveyCreator\SurveyServiceMVC\SurveyApplication\SurveyApplication\obj\Debug\SurveyApplication.pdb
-C:\Program Files (x86)\BaigiamasisDarbas\SurveyCreator\SurveyServiceMVC\SurveyApplication\SurveyApplication\bin\PlantUml.Reflector.dll
+C:\Program Files (x86)\BaigiamasisDarbas\SurveyCreator\SurveyServiceMVC\SurveyApplication\SurveyApplication\obj\Debug\SurveyApplication.csproj.AssemblyReference.cache

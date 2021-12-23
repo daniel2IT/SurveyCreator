@@ -312,9 +312,11 @@
     <Content Include="Views\Analyser\Details.cshtml" />
     <Content Include="Views\OverallAnalysis\Index.cshtml" />
     <Content Include="Views\OverallAnalysis\Details.cshtml" />
+    <Content Include="Views\OverallAnalysis\ExportExcel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ExcelExport\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

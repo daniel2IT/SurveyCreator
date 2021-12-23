@@ -8,7 +8,9 @@ import { Observable } from 'rxjs';
 
 
 export class SharedService {
+
   readonly APIUrl = "https://localhost:44341/api";
+  readonly MVCUrl = "https://localhost:44341"
 
   constructor(private http:HttpClient) {}
     
@@ -31,6 +33,7 @@ export class SharedService {
     {
       return this.http.put(this.APIUrl+'/survey',val);
     }
+
   
     //deleteExpense(valNo:any)
     //{

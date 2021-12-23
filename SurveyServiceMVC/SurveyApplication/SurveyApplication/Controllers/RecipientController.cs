@@ -59,6 +59,8 @@ namespace SurveyApplication.Controllers
 
         public List<Recipient> recipients = new List<Recipient>();
 
+
+
         // POST api/values
         [HttpPost]
         public string Post(Recipient postRecipient)
@@ -101,21 +103,26 @@ namespace SurveyApplication.Controllers
                         // Is survey to be save exists at all ?
                         if (postRecipient.SurveyId == Guid.Empty || postRecipient.SurveyId.Equals(null))
                         {
+                            // Check Survey Code Existing 
+                            EntityCollection GetSurveyByCodeEntityCollection = HelperClass.GetSurveyByCodeEntityCollection(service, postRecipient.SurveyCode);
 
-                            //postRecipient.SurveyName = "test123232";
-
-                            var surveyObj = new Survey
+                            if (GetSurveyByCodeEntityCollection.Entities.Count == 0)
                             {
-                                Code = postRecipient.SurveyCode,
-                                Name = postRecipient.SurveyName, // get title from angular
-                                RecipientId = postRecipient.RecipientId
-                            };
+                                    // Survey Data
+                                var surveyObj = new Survey
+                                {
+                                    Code = postRecipient.SurveyCode,
+                                    Name = postRecipient.SurveyName, // get title from angular
+                                    RecipientId = postRecipient.RecipientId
+                                };
 
-                            // Create Survey
-                            postRecipient.SurveyId = service.Create(_repository.CreateSurvey(surveyObj));
-
-                            // Create Recipient In db
-                            //  service.Create(_repository.CreateRecipient(postRecipient));
+                                // Create Survey
+                                postRecipient.SurveyId = service.Create(_repository.CreateSurvey(surveyObj));
+                            }
+                            else
+                            {
+                                postRecipient.SurveyId = GetSurveyByCodeEntityCollection.Entities[0].Id;
+                            }
                         }
 
                         // Create Recipient In db
@@ -126,10 +133,10 @@ namespace SurveyApplication.Controllers
 
                         // Send Message With Link
                         // https://localhost:44341/CompleteSurvey/Details/
-                        smtpClient.Send("areszka789@gmail.com", postRecipient.Email, "subject", "https://localhost:44341/CompleteSurvey/Details/" + Convert.ToString(postRecipient.RecipientId));
+                        smtpClient.Send("areszka789@gmail.com", postRecipient.Email, "subject2", "https://localhost:44341/CompleteSurvey/Details/" + Convert.ToString(postRecipient.RecipientId));
 
 
-                        return "completed";
+                        return Convert.ToString(postRecipient.SurveyId);
                     }
                 }
                 return "Save Survey First";

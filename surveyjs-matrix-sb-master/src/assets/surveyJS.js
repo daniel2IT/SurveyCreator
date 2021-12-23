@@ -17,18 +17,43 @@ const lisa = [];
 
 const callback = function(mutationsList, observer) {
     for(let mutation of mutationsList) {
+
+       try {
+
         if (mutation.type === 'childList') {
+
+            var lis3 = document.querySelector("#scrollableDiv > div > survey-widget > div > form > div.sv-container-modern > div.sv-title.sv-container-modern__title.svd_survey_header > div.sv-header__text");
+
+            lis3.remove();
+
+            var deleteQuer = document.querySelector("#surveyCreatorContainer > div > div > div:nth-child(1) > div > div > ul > li:nth-child(3)");
+
+            deleteQuer.remove();
+
+            var deleteQuer2 = document.querySelector("#surveyCreatorContainer > div > div > div:nth-child(1) > div > div > ul > li:nth-child(3)");
+
+            deleteQuer2.remove();
+
+
+            var deleteQuer3 = document.querySelector("#surveyCreatorContainer > div > div > div:nth-child(1) > div > div > ul > li:nth-child(3)");
+
+            deleteQuer3.remove();
+
+
           document.getElementsByClassName("svd_commercial_container")[0].style.display = 'none';
-          $('h2').remove();     
+          $('h2').remove();   
+          
 
-
-    var lis1 = document.querySelector("html body app-root div#app creator-page div.container- survey-creator div#surveyCreatorContainer div.svd_container.svd-light-bg-color.sv_modern_css div.svd-vertical-container div.svd-vertical-container__row div.svd-vertical-container__cell div ul.navbar-default.container-fluid.nav.nav-tabs.editor-tabs.svd-tabs.svd-light-bg-color");
-   
-    for(var i=8; i < lis1.childElementCount + 12; i++) {
-            lis1.removeChild(lis1.childNodes[i]);
-            }
         }
     }
+    catch{
+        document.getElementsByClassName("sa-commercial")[0].style.display = 'none';
+    }
+
+    } // for 
+
+ 
+   
 };
 
 const observer = new MutationObserver(callback);
