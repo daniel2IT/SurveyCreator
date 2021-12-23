@@ -78,36 +78,94 @@ namespace SurveyApplication.Controllers
                                                   null))
             {
                 //  Recipient Data from completed surveyCollection where SurveyId =
-                EntityCollection surveyCollection = HelperClass.GetEntityCollection(service, "new_survey", id);
-
-
-                var SurveyName = surveyCollection.Entities[0].Attributes["new_name"].ToString();
-                var SurveyCode = surveyCollection.Entities[0].Attributes["new_code"].ToString();
-
-
                 EntityCollection completeSurveyCollection = HelperClass.GetCompletedSurveyEntityCollection(service, id);
 
-
-                List<CompletedSurvey> getListCompletedSurvey = new List<CompletedSurvey>();
-
-
-                foreach (var SurveyItem in completeSurveyCollection.Entities)
+                if (completeSurveyCollection.Entities.Count != 0)
                 {
+                    // Get all Existing Result Codes
+                    IEnumerable<CompletedSurvey> completedSurveys = null;
+
+                    List<CompletedSurvey> getListCompletedSurvey = new List<CompletedSurvey>();
+
+                    // Get Design Survey Code One Time
+                    bool repeat = true;
+
+                    // get All data -> Survey / Recipient
+                    foreach (var SurveyItem in completeSurveyCollection.Entities)
+                    {
+                        var completedSurveyModel = new CompletedSurvey();
+
+                        // First Repeat -> List 1 element
+                        if (repeat.Equals(true))
+                        {
+                            // Get Survey by id code sended
+                            EntityCollection surveyCollection = HelperClass.GetEntityCollection(service, "new_survey", id);
+
+
+                            completedSurveyModel.Code = surveyCollection.Entities[0].Attributes["new_code"].ToString();
+
+
+                            repeat = false;
+                        }
+
+
+                        //   completedSurveyModel.Name = SurveyItem.Attributes["new_name"].ToString();
+                        //   completedSurveyModel.SurveyId = SurveyItem.GetAttributeValue<EntityReference>("new_survey").Id;
+                        // completedSurveyModel.RecipientId = SurveyItem.GetAttributeValue<EntityReference>("new_recipient").Id;
+
+                        // Recipient Result Code
+                        completedSurveyModel.ResultCode = SurveyItem.Attributes["new_code"].ToString();
+
+                        getListCompletedSurvey.Add(completedSurveyModel);
+                    }
+
+                    completedSurveys = getListCompletedSurvey;
+
+                    var analyseSurveyObj = new AnalyseListViewModel
+                    {
+                        completedSurveys = completedSurveys
+                    };
+
+                    // Return to View.
+                    return View(analyseSurveyObj.completedSurveys);
+                }
+                else
+                {
+
+                    EntityCollection surveyCollection = HelperClass.GetEntityCollection(service, "new_survey", id);
+
+
+
+                    // Get all Existing Result Codes
+                    IEnumerable<CompletedSurvey> completedSurveys = null;
+
+                    List<CompletedSurvey> getListCompletedSurvey = new List<CompletedSurvey>();
+
+                    // get All data -> Survey / Recipient
+
                     var completedSurveyModel = new CompletedSurvey();
 
-                    // Get Survey by id code sended
-                    completedSurveyModel.Code = SurveyItem.Attributes["new_code"].ToString();
+                    // Recipient Result Code
+                    completedSurveyModel.Code = surveyCollection.Entities[0].Attributes["new_code"].ToString();
+
+
 
                     getListCompletedSurvey.Add(completedSurveyModel);
+
+
+
+
+                    completedSurveys = getListCompletedSurvey;
+
+                    var analyseSurveyObj = new AnalyseListViewModel
+                    {
+                        completedSurveys = completedSurveys
+                    };
+
+
+                    return View(analyseSurveyObj.completedSurveys);
+
                 }
-
-                    byte[] fileBytes = System.IO.File.ReadAllBytes(@"c:\Program Files (x86)\BaigiamasisDarbas\SurveyCreator\SurveyServiceMVC\testFile.txt");
-                    string fileName = "testFile.txt";
-
-
-
-                return View();
-                    //return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
             }
         }
 
