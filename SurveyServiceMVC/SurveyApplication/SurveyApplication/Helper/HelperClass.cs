@@ -37,9 +37,13 @@ namespace SurveyApplication.Helper
                 query.Criteria.AddCondition("new_survey", ConditionOperator.Equal, getBySpecificId);
 
             }
-            else if (entityName.Equals("new_recipient"))
+            else if (entityName.Equals("new_completedsurvey"))
             {
                 query.Criteria.AddCondition("new_completedsurveyid", ConditionOperator.Equal, getBySpecificId);
+            }
+            else if (entityName.Equals("new_recipient"))
+            {
+                query.Criteria.AddCondition("new_recipient", ConditionOperator.Equal, getBySpecificId);
             }
 
             return service.RetrieveMultiple(query);
@@ -69,6 +73,33 @@ namespace SurveyApplication.Helper
 
             return service.RetrieveMultiple(query);
         }
+
+
+        public static EntityCollection GetEntityCollectionRecipientsBySurveyId(CrmServiceClient service, Guid id)
+        {
+            List<string> queryCollumns = new List<string>();
+
+            queryCollumns.Add("new_recipientid");
+            queryCollumns.Add("new_email");
+            queryCollumns.Add("new_survey");
+            queryCollumns.Add("new_iscompleted");
+
+
+            QueryExpression query = new QueryExpression("new_recipient");
+
+
+            // Fill Data To Query
+            query.ColumnSet.AddColumns(queryCollumns.ToArray());
+
+
+
+            // Criteria 
+            query.Criteria.AddCondition("new_survey", ConditionOperator.Equal, id);
+
+
+            return service.RetrieveMultiple(query);
+        }
+
 
 
 

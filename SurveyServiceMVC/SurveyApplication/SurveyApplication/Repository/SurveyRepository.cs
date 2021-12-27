@@ -112,5 +112,14 @@ namespace SurveyApplication.Repository
             return recipientList;
         }
 
+        public void DeleteRecipient(EntityCollection recipientCollection, Guid id, CrmServiceClient service)
+        {
+
+
+
+
+
+            throw new NotImplementedException();
+        }
     }
 }

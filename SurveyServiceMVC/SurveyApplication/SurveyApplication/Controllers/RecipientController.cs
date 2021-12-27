@@ -58,7 +58,7 @@ namespace SurveyApplication.Controllers
 
         // POST api/values
         [HttpPost]
-        public HttpResponseMessage Post([FromBody]List<Recipient> newRecipientsList)
+        public HttpResponseMessage Post([FromBody] List<Recipient> newRecipientsList)
         {
             foreach (var postRecipient in newRecipientsList)
             {
@@ -94,7 +94,7 @@ namespace SurveyApplication.Controllers
                         if (postRecipient.SurveyId == Guid.Empty || postRecipient.SurveyId.Equals(null))
                         {
 
-                            if(oldCode != postRecipient.SurveyCode)
+                            if (oldCode != postRecipient.SurveyCode)
                             {
                                 oldCode = postRecipient.SurveyCode;
                             }
@@ -136,5 +136,37 @@ namespace SurveyApplication.Controllers
             return Request.CreateErrorResponse(HttpStatusCode.OK, ModelState);
         }
 
-    }
+
+
+        // GET: Analyser/Delete/5
+        [HttpDelete]
+        public string Delete(Guid Id)
+        {
+            try
+            {
+
+                NetworkCredential myCred = new NetworkCredential("dev\\daniel.vaskevic", "Qwertas2235563", "");
+                using (var service = new CrmServiceClient(myCred,
+                                                        Microsoft.Xrm.Tooling.Connector.AuthenticationType.IFD,
+                                                        "lithgrad2.wdx-dev.net",
+                                                        "",
+                                                        "LithGrad2",
+                                                        false,
+                                                        true,
+                                                        null))
+                {
+
+                    service.Delete("new_recipient", Id);
+
+                    return "Record Successfully Deleted";
+                }
+            
+            }
+            catch
+            {
+                return "Failed to delete";
+            }
+        }
+
+}
 }

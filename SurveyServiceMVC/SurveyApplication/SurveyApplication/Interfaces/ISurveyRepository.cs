@@ -15,6 +15,7 @@ namespace SurveyApplication.Interfaces
 
         IEnumerable<Recipient> GetRecipient(EntityCollection surveyCollection, CrmServiceClient service);
 
+        void DeleteRecipient(EntityCollection recipientCollection, Guid id, CrmServiceClient service);
 
         Entity CreateSurvey(Survey postSurvey);
 

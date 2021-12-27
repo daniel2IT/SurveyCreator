@@ -90,7 +90,7 @@ namespace SurveyApplication.Controllers
             {
                 try { 
                 //  Recipient Data
-                EntityCollection completeSurveyCollection = HelperClass.GetCompletedSurveyEntityCollection(service, id, "new_recipient");
+                EntityCollection completeSurveyCollection = HelperClass.GetCompletedSurveyEntityCollection(service, id, "new_completedsurvey");
 
 
                 // Get completeSurveyCollection -> survey 
@@ -126,73 +126,6 @@ namespace SurveyApplication.Controllers
                 {
                     throw new ArgumentException("The respondent did not fill out the questionnaire yet");
                 }
-            }
-
-        }
-
-        // GET: Analyser/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Analyser/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Analyser/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Analyser/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Analyser/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Analyser/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
             }
         }
     }

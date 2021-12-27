@@ -13,7 +13,9 @@ export class SharedService {
   readonly MVCUrl = "https://localhost:44341"
 
   constructor(private http:HttpClient) {}
-    
+
+  // Survey
+
     getSurveyList():Observable<any[]>
     {
       return this.http.get<any>(this.APIUrl + '/survey');
@@ -23,8 +25,13 @@ export class SharedService {
     {
       return this.http.get<any>(this.APIUrl + '/results');
     }
+    deleteSurvey(valId:any)
+    {
+      return this.http.delete(this.APIUrl + '/survey/'+ valId);
+    }
+    
 
-
+  // Recipient
 
     getRecipientList():Observable<any[]>
     {
@@ -42,7 +49,7 @@ export class SharedService {
 
     deleteRecipient(valId:any)
     {
-      return this.http.delete(this.APIUrl + '/recipient', valId);
+      return this.http.delete(this.APIUrl + '/recipient/'+ valId);
     }
   
 }

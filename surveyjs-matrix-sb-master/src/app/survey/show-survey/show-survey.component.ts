@@ -132,6 +132,20 @@ savePDF(item) {
 }
 
 
+
+deleteClick(item: any)
+{
+  if(confirm("Are you sure?"))
+  {
+    this.service.deleteSurvey(item.SurveyId).subscribe(data =>
+    {
+      alert(data.toString());
+      this.refreshSurveyList();
+    })
+  }
+}
+
+
 /// Export Excel
 saveExcel(item) {
 
