@@ -14,9 +14,17 @@ namespace SurveyApplication.Models
         [Required]
         public Guid? RecipientId { get; set; }
 
+
+        [Required]
+        public Guid? CompletedId { get; set; }
+
         // new_email
         [Required]
         public string Email { get; set; }
+
+        // new_email
+        [Required]
+        public string Name { get; set; }
 
         // Many To Many
         // new_surveylookup

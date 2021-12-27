@@ -19,8 +19,12 @@ import { AnalyticsDatatablesPage } from "./pages/analytics.datatables.page";
 import { SurveyAnalyticsDatatablesComponent } from "./components/survey.analytics.datatables";
 
 
+import { FilterPipe } from "./pipesFilter/filter.pipe";
+import { SearchfilterPipe } from "./searchfilter.pipe";
 
 
+import {ProgressBarModule} from "angular-progress-bar"
+import { ShowRecipientComponent } from "./recipient/show-recipient/show-recipient.component";
 
 
 @NgModule({
@@ -32,9 +36,12 @@ import { SurveyAnalyticsDatatablesComponent } from "./components/survey.analytic
     HomePage,
     SurveyCreatorComponent,
     CreatorPage,
-    AnalyticsDatatablesPage
+    AnalyticsDatatablesPage,
+    SearchfilterPipe,
+    ShowRecipientComponent
+    
   ],
-  imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule, ReactiveFormsModule],
+  imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule, ReactiveFormsModule, ProgressBarModule],
   providers: [ SharedService ],
   bootstrap: [AppComponent],
 })

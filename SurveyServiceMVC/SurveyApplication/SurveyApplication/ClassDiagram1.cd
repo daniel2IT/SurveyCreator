@@ -10,7 +10,7 @@
   <Class Name="SurveyApplication.Repository.SurveyRepository" BaseTypeListCollapsed="true">
     <Position X="9.5" Y="3.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAACCAAAAAAAAAAAEAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAACCAAAAAAAAAAAEAAAAAIAAAAAAAAAAIAAAAAA=</HashCode>
       <FileName>Repository\SurveyRepository.cs</FileName>
     </TypeIdentifier>
     <Lollipop Orientation="Bottom" Position="0.468" />
@@ -25,7 +25,7 @@
   <Class Name="SurveyApplication.Models.Recipient">
     <Position X="14.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAQACAAIAIAAAAAAACAAAEAAhAAAAAAQAAAAAA=</HashCode>
+      <HashCode>AAAAAAAQACAAIAIAAAAAAASAAAEAAhAAAAAAQAAAAAA=</HashCode>
       <FileName>Models\Recipient.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -39,7 +39,7 @@
   <Class Name="SurveyApplication.Helper.HelperClass">
     <Position X="23.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAABAABAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAgAAAAAAAAABAABAAAAA=</HashCode>
       <FileName>Helper\HelperClass.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -55,27 +55,18 @@
   </Class>
   <Class Name="SurveyApplication.Controllers.RecipientController">
     <Position X="6.5" Y="11" Width="1.5" />
-    <AssociationLine Name="recipients" Type="System.Collections.Generic.List&lt;T&gt;" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="8" Y="11.811" />
-        <Point X="8.711" Y="11.811" />
-        <Point X="8.711" Y="13.125" />
-        <Point X="10" Y="13.125" />
-      </Path>
-    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAABAAABAAAAAAAAACAAAAABAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAABAAABAAAAAAAAACAAAAAAAAAAAAAAEAAA=</HashCode>
       <FileName>Controllers\RecipientController.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="_repository" />
-      <Field Name="recipients" />
     </ShowAsAssociation>
   </Class>
   <Class Name="SurveyApplication.Controllers.OverallAnalysisController">
     <Position X="11" Y="9" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAAEAAEACAAAAAAAAAAA=</HashCode>
       <FileName>Controllers\OverallAnalysisController.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -174,7 +165,7 @@
   <Interface Name="SurveyApplication.Interfaces.ISurveyRepository" Collapsed="true">
     <Position X="7" Y="13.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAACCAAAAAAAAAAAEAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAACCAAAAAAAAAAAEAAAAAIAAAAAAAAAAIAAAAAA=</HashCode>
       <FileName>Interfaces\ISurveyRepository.cs</FileName>
     </TypeIdentifier>
   </Interface>

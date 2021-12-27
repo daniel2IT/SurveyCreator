@@ -12,6 +12,8 @@ import { DataService } from 'app/services/data.service';
 import { DOCUMENT } from '@angular/common';
 
 import { Router } from '@angular/router';
+import { Survey } from './survey';
+
 
 
 widgets.icheck(SurveyCore);
@@ -33,12 +35,21 @@ widgets.prettycheckbox(SurveyCore);
   templateUrl: './show-survey.component.html',
   styleUrls: ['./show-survey.component.css']
 })
+
+
+
 export class ShowSurveyComponent implements OnInit {
+
+
+  searchValue = '';
 
   constructor(private service: SharedService, private data: DataService,
     @Inject(DOCUMENT) private document: Document, private router: Router) { }
+  transform(value: any, ...args: any[]) {
+    throw new Error('Method not implemented.');
+  }
 
-  SurveyList: any = [];
+  SurveyList: Survey[];
   survey: any;
 
     // Behavior
@@ -83,32 +94,36 @@ savePDF(item) {
 
 
   var options = {
-    fontSize: 14,
+    fontSize: 0,
     margins: {
       left: 10,
       right: 10,
       top: 5,
       bot: 10,
     },
-      format: [210, 297]
+      format: [210, 297],
+      commercial: true
   };
+
+  
   
 
 
    if(this.survey.Code){
-   
      
-        const surveyPDF = new SurveyPDF.SurveyPDF(this.survey.Code, options);
+      const surveyPDF = new SurveyPDF.SurveyPDF(this.survey.Code, options);
 
-     surveyPDF.data =this.result;
-  surveyPDF.save("WdxSurvey");
+      surveyPDF.data =this.result;
 
+      surveyPDF.save("WdxSurvey");
 
   }
   else{
     
 
        const surveyPDF = new SurveyPDF.SurveyPDF(JSON.stringify(this.survey.Code), options);
+
+       
       surveyPDF.data = this.result;
   surveyPDF.save("WdxSurvey");
 

@@ -1,12 +1,20 @@
+<div class="form-group row"> 
+  <label for="search" class="col-sm-2 col-form-label" style="text-align: right;">Search</label>
+    <div class="col-sm-6">
+      <input type="text" [(ngModel)]="searchValue" class="form-control" id="search" />
+    </div>  
+</div>
+
 <table class="table table-striped">
-  <h1> Survey List </h1>  
-  <thead>
+  <h1> Survey List </h1>    
+  <thead class="thead-dark">
       <tr>
-          <th> Name </th>
+          <th scope="col"> Name </th>
       </tr>
   </thead>
   <tbody class="recipient">
-      <tr *ngFor="let surveyItem of SurveyList">
+
+      <tr *ngFor="let surveyItem of SurveyList | searchfilter:searchValue">
           <td>{{surveyItem.Name}}</td>
           <button type="button" class="btn btn-warning mr-1 btn-lg"
           data-toggle="modal" data-target="#exampleModal"

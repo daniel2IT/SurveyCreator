@@ -8,7 +8,9 @@ namespace SurveyApplication.Helper
 {
     public class HelperClass
     {
-        public static EntityCollection GetCompletedSurveyEntityCollection(CrmServiceClient service, Guid? getBySpecificId)
+
+
+        public static EntityCollection GetCompletedSurveyEntityCollection(CrmServiceClient service, Guid? getBySpecificId, string entityName)
         {
             List<string> queryCollumns = new List<string>();
 
@@ -30,8 +32,16 @@ namespace SurveyApplication.Helper
 
 
             // Criteria 
-            query.Criteria.AddCondition("new_survey", ConditionOperator.Equal, getBySpecificId);
-               
+            if (entityName.Equals("new_survey"))
+            {
+                query.Criteria.AddCondition("new_survey", ConditionOperator.Equal, getBySpecificId);
+
+            }
+            else if (entityName.Equals("new_recipient"))
+            {
+                query.Criteria.AddCondition("new_completedsurveyid", ConditionOperator.Equal, getBySpecificId);
+            }
+
             return service.RetrieveMultiple(query);
         }
 
@@ -55,7 +65,7 @@ namespace SurveyApplication.Helper
 
 
             // Criteria 
-            query.Criteria.AddCondition("new_code", ConditionOperator.Equal, Convert.ToString(code));
+            query.Criteria.AddCondition("new_code", ConditionOperator.Equal, code);
 
             return service.RetrieveMultiple(query);
         }
@@ -137,7 +147,7 @@ namespace SurveyApplication.Helper
                 }
                 else if (entityName.Equals("new_completedsurvey"))
                 {
-                    query.Criteria.AddCondition("new_completedsurveyid", ConditionOperator.Equal, getBySpecificId);
+                    query.Criteria.AddCondition("new_recipient", ConditionOperator.Equal, getBySpecificId);
                 }
             }
             else

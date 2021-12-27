@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xrm.Sdk;
+using Microsoft.Xrm.Tooling.Connector;
 using SurveyApplication.Models;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,9 @@ namespace SurveyApplication.Interfaces
     public interface ISurveyRepository
     {
         IEnumerable<Survey> GetSurvey(EntityCollection surveyCollection);
+
+        IEnumerable<Recipient> GetRecipient(EntityCollection surveyCollection, CrmServiceClient service);
+
 
         Entity CreateSurvey(Survey postSurvey);
 

@@ -1,9 +1,13 @@
 ﻿using Microsoft.Xrm.Sdk;
+using Microsoft.Xrm.Sdk.Query;
+using Microsoft.Xrm.Tooling.Connector;
+using SurveyApplication.Helper;
 using SurveyApplication.Interfaces;
 using SurveyApplication.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 
 namespace SurveyApplication.Repository
@@ -50,22 +54,63 @@ namespace SurveyApplication.Repository
         {
             List<Survey> surveyList = new List<Survey>();
 
-            foreach (Entity expense in surveyCollection.Entities)
+            foreach (Entity suvey in surveyCollection.Entities)
             {
-                Survey expenseModel = new Survey();
-
-                // Get Employee Id&&Name
-                //expenseModel.SurveyId = (Guid)((EntityReference)expense.Attributes["new_survey"]).Id;
-                expenseModel.SurveyId = (Guid)expense.Attributes["new_surveyid"];
+                Survey surveyModel = new Survey();
 
 
-                expenseModel.Name = expense.Attributes["new_name"].ToString();
-                expenseModel.Code = expense.Attributes["new_code"].ToString();
+                surveyModel.SurveyId = (Guid)suvey.Attributes["new_surveyid"];
 
 
-                surveyList.Add(expenseModel);
+                surveyModel.Name = suvey.Attributes["new_name"].ToString();
+                surveyModel.Code = suvey.Attributes["new_code"].ToString();
+
+
+                surveyList.Add(surveyModel);
             }
             return surveyList;
         }
+
+
+
+        public IEnumerable<Recipient> GetRecipient(EntityCollection recipientCollection, CrmServiceClient service)
+        {
+            List<Recipient> recipientList = new List<Recipient>();
+
+            foreach (Entity recipient in recipientCollection.Entities)
+            {
+                Recipient recipientModel = new Recipient();
+
+                // Get Recipient Id
+                 recipientModel.RecipientId = (Guid)recipient.Attributes["new_recipientid"];
+
+
+                // Get Survey Name
+                EntityReference surveyReference = (EntityReference)recipient.Attributes["new_survey"];
+                recipientModel.SurveyName = surveyReference.Name;
+
+                // Get Username From Email
+                MailAddress addr = new MailAddress(recipient.Attributes["new_email"].ToString());
+                string username = addr.User;
+                recipientModel.Name = username;
+
+
+                // If Recipient Completed Survey Get:
+
+                
+                EntityCollection completeSurveyCollection = HelperClass.GetEntityCollection(service, "new_completedsurvey", recipientModel.RecipientId);
+
+
+                if (completeSurveyCollection.Entities.Count != 0)
+                {
+                    recipientModel.CompletedId = (Guid)completeSurveyCollection.Entities[0].Id;
+                }
+
+
+                recipientList.Add(recipientModel);
+            }
+            return recipientList;
+        }
+
     }
 }

@@ -15,7 +15,7 @@ namespace SurveyApplication.Controllers
     public class OverallAnalysisController : Controller
     {
         // GET: OverallAnalysis
-        public ActionResult Index()
+/*        public ActionResult Index()
         {
             NetworkCredential myCred = new NetworkCredential("dev\\daniel.vaskevic", "Qwertas2235563", "");
             using (var service = new CrmServiceClient(myCred,
@@ -60,7 +60,7 @@ namespace SurveyApplication.Controllers
                 // Return to View.
                 return View(analyseSurveyObj.surveys);
             }
-        }
+        }*/
 
 
         // GET: OverallAnalysis/Details/a2a4383f-bf4b-ec11-9119-005056010f5f
@@ -78,7 +78,7 @@ namespace SurveyApplication.Controllers
                                                   null))
             {
                 //  Recipient Data from completed surveyCollection where SurveyId =
-                EntityCollection completeSurveyCollection = HelperClass.GetCompletedSurveyEntityCollection(service, id);
+                EntityCollection completeSurveyCollection = HelperClass.GetCompletedSurveyEntityCollection(service, id, "new_survey");
 
                 if (completeSurveyCollection.Entities.Count != 0)
                 {
@@ -102,6 +102,7 @@ namespace SurveyApplication.Controllers
                             EntityCollection surveyCollection = HelperClass.GetEntityCollection(service, "new_survey", id);
 
 
+                            completedSurveyModel.Name = surveyCollection.Entities[0].Attributes["new_name"].ToString();
                             completedSurveyModel.Code = surveyCollection.Entities[0].Attributes["new_code"].ToString();
 
 
@@ -185,7 +186,7 @@ namespace SurveyApplication.Controllers
                                                         null))
                   {
                       //  Recipient Data from completed surveyCollection where SurveyId =
-                      EntityCollection completeSurveyCollection = HelperClass.GetCompletedSurveyEntityCollection(service, id);
+                      EntityCollection completeSurveyCollection = HelperClass.GetCompletedSurveyEntityCollection(service, id, "new_survey");
 
                       if (completeSurveyCollection.Entities.Count != 0)
                       {

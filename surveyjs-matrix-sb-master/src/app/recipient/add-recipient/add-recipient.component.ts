@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms'  
 import { SharedService } from 'app/services/shared.service';
 import { DataService } from 'app/services/data.service';
+
 
 
 // Excel
@@ -17,12 +18,16 @@ const input = document.getElementById('input')
 })
 
 export class AddRecipientComponent  {
-
+  @Input()
+  progress = 0;
 
 
 arrayBuffer:any;
 file:File;
 thisIsTestArray = new Array();
+
+SurveyPost: any = [];
+
 
 incomingfile(event) 
   {
@@ -92,8 +97,13 @@ incomingfile(event)
  ReadyJson: any;
 
  TitleExist:boolean = false;
+
+ SendSurveyList: any = [];
  ////////////
 
+  // Progress Bar
+  loadingVal: number = 0;
+  progressValues: any;
 
 
      
@@ -105,9 +115,12 @@ incomingfile(event)
     });  
   }
 
+  
+
    ngOnInit() {
    // Behavior
     this.data.currentMessage.subscribe(message => this.message = message)
+
    }  
     
    recipients() : FormArray {  
@@ -183,6 +196,9 @@ else{
   
   this.TitleExist = !this.TitleExist;
 
+
+  this.progressValues = 100 / this.productForm.value.recipients.length;
+
     Object.keys(this.productForm.controls).forEach(key => {
        
           if(key === "recipients"){
@@ -195,9 +211,7 @@ else{
             for(let i=0; i<recipients7.length; i++){
               console.log("(recipients7[i] " + recipients7[i].qty); //use i instead of 0
 
-
-                   // if message surveyID empty not saved than
-
+             // if message surveyID empty not saved than
             if(this.message.SurveyId){
 
             }
@@ -224,7 +238,7 @@ else{
 
                 this.messageCode = JSON.stringify(this.message);
 
-                 this.messageCode.replace(/\\/g, '');
+                 
 
 
                 var val = 
@@ -244,11 +258,18 @@ else{
                     return;
             }
 
+           
+            this.SendSurveyList.push(val);
+            
+          }
 
-              this.service.addRecipient(val).subscribe();
+          this.service.addRecipient(this.SendSurveyList).subscribe(res=>{});
+
+
+          for(let i=0; i<recipients7.length; i++){
+          window.setTimeout(() => (this.loadingVal += this.progressValues), i * 500);
           }
         }
-
       });
     }
     }

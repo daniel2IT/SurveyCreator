@@ -8,6 +8,8 @@ import { AddRecipientComponent } from "./recipient/add-recipient/add-recipient.c
 import { ShowSurveyComponent } from "./survey/show-survey/show-survey.component";
 import { AnalyticsDatatablesPage } from "./pages/analytics.datatables.page";
 import { SurveyAnalyticsDatatablesComponent } from "./components/survey.analytics.datatables";
+import { PdfExportPage } from "./pages/pdfexport.page";
+import { ShowRecipientComponent } from "./recipient/show-recipient/show-recipient.component";
 
 
 
@@ -17,7 +19,9 @@ const routes: Routes = [
   { path: "creator", component: CreatorPage },
   { path: "recipient", component: AddRecipientComponent},
   { path: "surveys", component: ShowSurveyComponent},
-  { path: "excel", component: SurveyAnalyticsDatatablesComponent}
+  { path: "excel", component: SurveyAnalyticsDatatablesComponent},
+  { path: "recipients", component: ShowRecipientComponent},
+
 ];
 
 @NgModule({

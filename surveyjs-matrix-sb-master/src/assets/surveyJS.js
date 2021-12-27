@@ -48,7 +48,11 @@ const callback = function(mutationsList, observer) {
     }
     catch{
         document.getElementsByClassName("sa-commercial")[0].style.display = 'none';
+        document.getElementsByClassName("svd_commercial_container")[0].style.display = 'none';
+        survey.haveCommercialLicense = true;
+        commercial = true;
     }
+
 
     } // for 
 

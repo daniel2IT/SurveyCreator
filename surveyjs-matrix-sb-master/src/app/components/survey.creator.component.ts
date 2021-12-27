@@ -102,6 +102,8 @@ export class SurveyCreatorComponent {
        showEmbededSurveyTab: true, 
       showTranslationTab: true
      };
+
+     
     this.surveyCreator = new SurveyCreator.SurveyCreator(
       "surveyCreatorContainer",
       options

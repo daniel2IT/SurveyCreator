@@ -15,6 +15,7 @@ export class SurveyAnalyticsDatatablesComponent implements OnInit {
 
 
   message:any;
+  SurveyResultList: any = [];
 
   constructor(private data: DataService, private service: SharedService, ) {  
      
@@ -30,7 +31,9 @@ export class SurveyAnalyticsDatatablesComponent implements OnInit {
 
     alert(this.message);
 
-
+    this.service.getSurveyList().subscribe(data=>{
+      this.SurveyResultList = data;
+    });
 
 
     var json = this.message;

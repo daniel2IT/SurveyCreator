@@ -88,8 +88,9 @@ namespace SurveyApplication.Controllers
                                                   true,
                                                   null))
             {
+                try { 
                 //  Recipient Data
-                EntityCollection completeSurveyCollection = HelperClass.GetEntityCollection(service, "new_completedsurvey", id);
+                EntityCollection completeSurveyCollection = HelperClass.GetCompletedSurveyEntityCollection(service, id, "new_recipient");
 
 
                 // Get completeSurveyCollection -> survey 
@@ -120,6 +121,11 @@ namespace SurveyApplication.Controllers
 
                 // Return to View.
                 return View(surveyObj);
+                }
+                catch(Exception ex)
+                {
+                    throw new ArgumentException("The respondent did not fill out the questionnaire yet");
+                }
             }
 
         }

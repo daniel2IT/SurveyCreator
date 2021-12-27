@@ -19,24 +19,30 @@ export class SharedService {
       return this.http.get<any>(this.APIUrl + '/survey');
     }
 
-    addSurvey(val:any)
+    getSurveyResulList():Observable<any[]>
     {
-      return this.http.post(this.APIUrl+'/survey',val);
+      return this.http.get<any>(this.APIUrl + '/results');
     }
 
-    addRecipient(val:any)
+
+
+    getRecipientList():Observable<any[]>
+    {
+      return this.http.get<any>(this.APIUrl + '/recipient');
+    }
+
+    addRecipient(val:any[])
     {
       return this.http.post(this.APIUrl+'/recipient',val);
     }
-  
-    updateSurvey(val:any)
-    {
-      return this.http.put(this.APIUrl+'/survey',val);
+
+    getRecipientResult(valId:any){
+      return this.http.get(this.APIUrl + '/recipient', valId);
     }
 
+    deleteRecipient(valId:any)
+    {
+      return this.http.delete(this.APIUrl + '/recipient', valId);
+    }
   
-    //deleteExpense(valNo:any)
-    //{
-    //  return this.http.delete(this.APIUrl+'/expense/'+ valNo);
-    //}
 }
