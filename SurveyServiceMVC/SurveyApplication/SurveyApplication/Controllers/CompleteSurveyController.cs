@@ -15,13 +15,6 @@ namespace SurveyApplication.Controllers
 {
     public class CompleteSurveyController : Controller
     {
-        // GET: CompleteSurvey
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        // GET: CompleteSurvey/Details/577209C9-7F52-EC11-911B-005056010F5F
         // [value("9245fe4a-d402-451c-b9ed-9c1a04247482")]
         public ActionResult Details(Guid id)
         {
@@ -72,17 +65,9 @@ namespace SurveyApplication.Controllers
 
                 }
 
-        
-
                 // Return to View.
                 return View();
             }
-        }
-
-        // GET: CompleteSurvey/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
         }
 
         // POST: CompleteSurvey/Edit/5
@@ -116,13 +101,9 @@ namespace SurveyApplication.Controllers
 
 
                     completedSurveyEntity["new_name"] = model.Name;
-
-
                     completedSurveyEntity["new_code"] = model.Code;
-
                     // new_surveylookup
                     completedSurveyEntity["new_survey"] = new EntityReference("new_survey", (Guid)model.SurveyId);
-
                     // recipientlookup
                     completedSurveyEntity["new_recipient"] = new EntityReference("new_recipient", (Guid)model.RecipientId);
 

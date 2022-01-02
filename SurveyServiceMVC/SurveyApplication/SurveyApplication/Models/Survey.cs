@@ -17,7 +17,6 @@ namespace SurveyApplication.Models
         [Required]
         public string Code { get; set; }
 
-
         // Additional Just For CompleteSurveyController Declaration.
         public Guid? RecipientId { get; set; }
     }

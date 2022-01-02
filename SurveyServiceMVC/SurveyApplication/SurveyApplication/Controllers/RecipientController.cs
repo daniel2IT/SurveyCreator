@@ -102,7 +102,6 @@ namespace SurveyApplication.Controllers
                             // Check Survey Code Existing 
                             EntityCollection GetSurveyByCodeEntityCollection = HelperClass.GetSurveyByCodeEntityCollection(service, postRecipient.SurveyCode);
 
-
                             if (GetSurveyByCodeEntityCollection.Entities.Count == 0)
                             {
                                 // Survey Data
@@ -168,5 +167,5 @@ namespace SurveyApplication.Controllers
             }
         }
 
-}
+    }
 }

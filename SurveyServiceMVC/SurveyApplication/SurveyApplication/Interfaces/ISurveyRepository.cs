@@ -19,8 +19,6 @@ namespace SurveyApplication.Interfaces
 
         Entity CreateSurvey(Survey postSurvey);
 
-        //Entity UpdateSurvey(Survey postSurvey, EntityCollection surveyCollection, CrmServiceClient service);
-
         Entity CreateRecipient(Recipient postRecipient);
 
         // Analyses

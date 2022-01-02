@@ -71,7 +71,6 @@ namespace SurveyApplication.Controllers
                     // All this survey -> recipients
                     EntityCollection recipientCollection = HelperClass.GetEntityCollectionRecipientsBySurveyId(service, Id);
 
-
                     // All completedSurveys -> recipients(this survey)
                     foreach (Entity recipient in recipientCollection.Entities)
                     {

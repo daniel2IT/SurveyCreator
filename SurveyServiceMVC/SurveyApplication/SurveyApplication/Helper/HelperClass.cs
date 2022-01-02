@@ -9,7 +9,6 @@ namespace SurveyApplication.Helper
     public class HelperClass
     {
 
-
         public static EntityCollection GetCompletedSurveyEntityCollection(CrmServiceClient service, Guid? getBySpecificId, string entityName)
         {
             List<string> queryCollumns = new List<string>();
@@ -99,12 +98,6 @@ namespace SurveyApplication.Helper
 
             return service.RetrieveMultiple(query);
         }
-
-
-
-
-
-
 
         public static bool IsValidEmail(string email)
         {

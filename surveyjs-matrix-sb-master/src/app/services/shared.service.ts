@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 
-
 export class SharedService {
 
   readonly APIUrl = "https://localhost:44341/api";
@@ -15,7 +14,6 @@ export class SharedService {
   constructor(private http:HttpClient) {}
 
   // Survey
-
     getSurveyList():Observable<any[]>
     {
       return this.http.get<any>(this.APIUrl + '/survey');
@@ -29,10 +27,8 @@ export class SharedService {
     {
       return this.http.delete(this.APIUrl + '/survey/'+ valId);
     }
-    
 
   // Recipient
-
     getRecipientList():Observable<any[]>
     {
       return this.http.get<any>(this.APIUrl + '/recipient');
@@ -51,5 +47,4 @@ export class SharedService {
     {
       return this.http.delete(this.APIUrl + '/recipient/'+ valId);
     }
-  
 }

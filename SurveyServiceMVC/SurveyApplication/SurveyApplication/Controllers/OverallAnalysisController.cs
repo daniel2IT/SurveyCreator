@@ -14,54 +14,6 @@ namespace SurveyApplication.Controllers
 {
     public class OverallAnalysisController : Controller
     {
-        // GET: OverallAnalysis
-/*        public ActionResult Index()
-        {
-            NetworkCredential myCred = new NetworkCredential("dev\\daniel.vaskevic", "Qwertas2235563", "");
-            using (var service = new CrmServiceClient(myCred,
-                                                  Microsoft.Xrm.Tooling.Connector.AuthenticationType.IFD,
-                                                  "lithgrad2.wdx-dev.net",
-                                                  "",
-                                                  "LithGrad2",
-                                                  false,
-                                                  true,
-                                                  null))
-            {
-
-                //  Get Survey Data
-                EntityCollection surveyCollection = HelperClass.GetEntityCollection(service, "new_survey", Guid.Empty);
-
-                IEnumerable<Survey> surveys = null;
-
-                List<Survey> getListSurvey = new List<Survey>();
-
-                // get All data -> Survey / Recipient
-
-                foreach (var SurveyItem in surveyCollection.Entities)
-                {
-                    var surveyModel = new Survey();
-
-                    surveyModel.Name = SurveyItem.Attributes["new_name"].ToString();
-                    surveyModel.SurveyId = (Guid)(SurveyItem.Attributes["new_surveyid"]);
-
-                    //  listObject.Code = completeSurveyItem.Attributes["new_code"].ToString();
-
-
-                    getListSurvey.Add(surveyModel);
-                }
-
-                surveys = getListSurvey;
-
-                var analyseSurveyObj = new AnalyseListViewModel
-                {
-                    surveys = surveys
-                };
-
-                // Return to View.
-                return View(analyseSurveyObj.surveys);
-            }
-        }*/
-
 
         // GET: OverallAnalysis/Details/a2a4383f-bf4b-ec11-9119-005056010f5f
         public ActionResult ExportExcel(Guid id)
@@ -170,7 +122,6 @@ namespace SurveyApplication.Controllers
             }
         }
 
-
         // GET: OverallAnalysis/Details/a2a4383f-bf4b-ec11-9119-005056010f5f
         public ActionResult Details(Guid id)
         {
@@ -276,72 +227,6 @@ namespace SurveyApplication.Controllers
                       }
 
                   }
-        }
-
-        // GET: OverallAnalysis/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: OverallAnalysis/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: OverallAnalysis/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: OverallAnalysis/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: OverallAnalysis/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: OverallAnalysis/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }

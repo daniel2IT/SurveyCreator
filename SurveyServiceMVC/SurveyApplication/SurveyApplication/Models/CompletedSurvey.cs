@@ -25,7 +25,6 @@ namespace SurveyApplication.Models
         [Required]
         public string Name { get; set; }
 
-
         // Additional variable for results
         public string Code { get; set; }
     }

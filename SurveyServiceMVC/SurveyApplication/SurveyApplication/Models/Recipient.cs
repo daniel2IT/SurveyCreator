@@ -14,7 +14,6 @@ namespace SurveyApplication.Models
         [Required]
         public Guid? RecipientId { get; set; }
 
-
         [Required]
         public Guid? CompletedId { get; set; }
 
@@ -45,7 +44,6 @@ namespace SurveyApplication.Models
 
 
         // Process
-
         public Boolean ProcessSending { get; set; } 
 
     }

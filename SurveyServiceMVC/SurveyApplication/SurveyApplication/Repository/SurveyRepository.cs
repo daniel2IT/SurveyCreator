@@ -58,13 +58,9 @@ namespace SurveyApplication.Repository
             {
                 Survey surveyModel = new Survey();
 
-
                 surveyModel.SurveyId = (Guid)suvey.Attributes["new_surveyid"];
-
-
                 surveyModel.Name = suvey.Attributes["new_name"].ToString();
                 surveyModel.Code = suvey.Attributes["new_code"].ToString();
-
 
                 surveyList.Add(surveyModel);
             }
@@ -84,7 +80,6 @@ namespace SurveyApplication.Repository
                 // Get Recipient Id
                  recipientModel.RecipientId = (Guid)recipient.Attributes["new_recipientid"];
 
-
                 // Get Survey Name
                 EntityReference surveyReference = (EntityReference)recipient.Attributes["new_survey"];
                 recipientModel.SurveyName = surveyReference.Name;
@@ -94,12 +89,8 @@ namespace SurveyApplication.Repository
                 string username = addr.User;
                 recipientModel.Name = username;
 
-
                 // If Recipient Completed Survey Get:
-
-                
                 EntityCollection completeSurveyCollection = HelperClass.GetEntityCollection(service, "new_completedsurvey", recipientModel.RecipientId);
-
 
                 if (completeSurveyCollection.Entities.Count != 0)
                 {
