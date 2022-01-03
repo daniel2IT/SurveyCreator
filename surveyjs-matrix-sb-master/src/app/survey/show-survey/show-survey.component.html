@@ -6,12 +6,11 @@
 </div>
 
 <table class="table table-striped">
-  <h1> Survey List </h1>    
   <thead class="thead-dark">
-      <tr>
-          <th scope="col"> Name </th>
-      </tr>
-  </thead>
+    <tr>
+        <th scope="col"> Survey Name </th>
+    </tr>
+</thead>
   <tbody class="recipient">
 
       <tr *ngFor="let surveyItem of SurveyList | searchfilter:searchValue">

@@ -22,14 +22,15 @@ namespace SurveyApplication.Controllers
             _repository = repository;
         }
 
-
+   
         // GET
         [HttpGet]
         public HttpResponseMessage Get()
         {
             try
             {
-                NetworkCredential myCred = new NetworkCredential("dev\\daniel.vaskevic", "Qwertas2235563", "");
+              
+                    NetworkCredential myCred = new NetworkCredential("dev\\daniel.vaskevic", "Qwertas2235563", "");
                 using (var service = new CrmServiceClient(myCred,
                                                       Microsoft.Xrm.Tooling.Connector.AuthenticationType.IFD,
                                                       "lithgrad2.wdx-dev.net",
@@ -48,7 +49,7 @@ namespace SurveyApplication.Controllers
             }
             catch (Exception ex)
             {
-                throw new ArgumentException(ex.Message);
+                return null;
             }
         }
 

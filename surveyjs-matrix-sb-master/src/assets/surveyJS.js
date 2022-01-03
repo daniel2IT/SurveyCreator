@@ -22,6 +22,8 @@ const callback = function(mutationsList, observer) {
 
         if (mutation.type === 'childList') {
 
+  
+
             var lis3 = document.querySelector("#scrollableDiv > div > survey-widget > div > form > div.sv-container-modern > div.sv-title.sv-container-modern__title.svd_survey_header > div.sv-header__text");
 
             lis3.remove();
@@ -39,15 +41,15 @@ const callback = function(mutationsList, observer) {
 
             deleteQuer3.remove();
 
-            var deleteQuer4 = document.querySelector("#surveyCreatorContainer > div > div > div:nth-child(1) > div > div > ul > li:nth-child(2) > span");
+            var changeQuer4 = document.querySelector("#surveyCreatorContainer > div > div > div:nth-child(1) > div > div > ul > li:nth-child(2) > span");
 
-            deleteQuer4.innerHTML = "Preview";
+            changeQuer4.innerHTML = "Preview";
 
-          document.getElementsByClassName("svd_commercial_container")[0].style.display = 'none';
-          $('h2').remove();  
-          
-          
+            //var changeQuer5 = document.querySelector("#svd-save");
+           // changeQuer5.header__text = "Save Survey State";
 
+            document.getElementsByClassName("svd_commercial_container")[0].style.display = 'none';
+            $('h2').remove();  
         }
     }
     catch{

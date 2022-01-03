@@ -14,6 +14,10 @@ div.centered:nth-child(2){
 }
 
 
+.table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+    width: 60%;
+}
+
 
 input.btn.btn-info {  
     margin-top: 5px;
@@ -56,4 +60,8 @@ tr td:last-child {
 textarea {
     resize: none;
     overflow: hidden;
+  }
+
+  .btn-group-sm>.btn, .btn-sm{
+    font-size: 16px !important;
   }
