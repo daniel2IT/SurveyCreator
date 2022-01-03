@@ -4,16 +4,16 @@ function hideSurveyJsField(){
  }
 
 
+function resizeInput() {
+  this.style.width = this.value.length + "ch";
+}
 
-// javascript call function when content changed ()
-const targetNode = document.body;
-const config = { childList: true, subtree: true };
-const lisa = [];
 
           
 //$('.btn btn-primary sv-btn svd-toolbar-button svd_save_btn').onclick(function() {
 //    alert("Hello");
 //});
+
 
 const callback = function(mutationsList, observer) {
     for(let mutation of mutationsList) {
@@ -39,9 +39,13 @@ const callback = function(mutationsList, observer) {
 
             deleteQuer3.remove();
 
+            var deleteQuer4 = document.querySelector("#surveyCreatorContainer > div > div > div:nth-child(1) > div > div > ul > li:nth-child(2) > span");
+
+            deleteQuer4.innerHTML = "Preview";
 
           document.getElementsByClassName("svd_commercial_container")[0].style.display = 'none';
-          $('h2').remove();   
+          $('h2').remove();  
+          
           
 
         }
@@ -53,12 +57,32 @@ const callback = function(mutationsList, observer) {
         commercial = true;
     }
 
-
     } // for 
 
  
    
 };
 
+// javascript call function when content changed ()
+const targetNode = document.body;
+const config = { childList: true, subtree: true };
+const lisa = [];
+
+
 const observer = new MutationObserver(callback);
 observer.observe(targetNode, config);
+
+
+
+function disableButton(btn) {
+    document.getElementById(btn.id).disabled = true;
+}
+
+function enableButton(btn) {
+    document.getElementById(btn.id).disabled = false;
+}
+
+
+var input = document.querySelector('input'); // get the input element
+input.addEventListener('input', resizeInput); // bind the "resizeInput" callback on "input" event
+resizeInput.call(input); // immediately call the function

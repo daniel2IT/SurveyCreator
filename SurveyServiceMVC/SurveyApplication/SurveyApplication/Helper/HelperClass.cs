@@ -101,6 +101,11 @@ namespace SurveyApplication.Helper
 
         public static bool IsValidEmail(string email)
         {
+            try {
+                if (email == null)
+                {
+                    return false;
+                }
             if (email.Trim().EndsWith("."))
             {
                 return false; // suggested by @TK-421
@@ -109,6 +114,11 @@ namespace SurveyApplication.Helper
             {
                 var addr = new System.Net.Mail.MailAddress(email);
                 return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
             }
             catch
             {

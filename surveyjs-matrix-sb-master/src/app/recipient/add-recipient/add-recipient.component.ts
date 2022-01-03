@@ -3,7 +3,7 @@ import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms'
 import { SharedService } from 'app/services/shared.service';
 import { DataService } from 'app/services/data.service';
 
-
+declare function disableButton(btn: any): any;
 
 // Excel
 import * as XLSX from 'ts-xlsx';
@@ -24,7 +24,12 @@ export class AddRecipientComponent  {
 
 arrayBuffer:any;
 file:File;
-thisIsTestArray = new Array();
+
+
+ArrayOfRecipient= new Array();
+
+arrayRecipient = new Array();
+
 
 SurveyPost: any = [];
 
@@ -36,9 +41,6 @@ incomingfile(event)
  Upload(event) {
 
   this.file= event.target.files[0]; 
-
-
-
 
      // If we Have Excel File
      if(this.file != null){
@@ -53,29 +55,33 @@ incomingfile(event)
           var first_sheet_name = workbook.SheetNames[0];
           var worksheet = workbook.Sheets[first_sheet_name];
         
-          this.thisIsTestArray = XLSX.utils.sheet_to_json(worksheet,{raw:true});
+          var thisIsTestArray = new Array();
 
-          this.thisIsTestArray.forEach(function (entry) {
+          thisIsTestArray = XLSX.utils.sheet_to_json(worksheet,{raw:true});
+
+          thisIsTestArray.forEach(function (entry) {
            delete entry['List_1'];
          });
 
-         console.log(this.thisIsTestArray);
+         for (let entry of  thisIsTestArray) {
+         this.ArrayOfRecipient.push(entry['List']);
+         }
 
-         for (let entry of  this.thisIsTestArray) {
-          console.log(entry); // 1, "string", false
-         this.recipients().push(this.newRecipientFromArray(entry['List'])); 
-      }
-          
+         if(this.ArrayOfRecipient.length > 0){
+                const value =  this.recipients().controls[0].get("qty").value;
+                var RecipienList = value.concat(this.ArrayOfRecipient.toString()); 
+                this.recipients().controls[0].get("qty").patchValue(RecipienList);
+            }
+
       }
       fileReader.readAsArrayBuffer(this.file);
     }
    else{
      alert("Please Upload Excel File First");
    }
-   
-        
 
-        
+this.ArrayOfRecipient = [];
+ 
 }
 
 
@@ -118,6 +124,8 @@ incomingfile(event)
   
 
    ngOnInit() {
+    this.progressValues = 0;
+    this.loadingVal = 0;
    // Behavior
     this.data.currentMessage.subscribe(message => this.message = message)
 
@@ -144,18 +152,17 @@ incomingfile(event)
   }  
      
   removeRecipient(i:number) {  
-    this.recipients().removeAt(i);  
+this.recipients().removeAt(i); 
   }  
      
   onSubmit() { 
+    this.progressValues = 0;
+    this.loadingVal = 0;
+
 
     // Email LogIns.
    var strLogIn = (<HTMLInputElement>document.getElementById("emailName")).value; 
    var strPass = (<HTMLInputElement>document.getElementById("emailPassword")).value; 
-
-  //  console.log(this.productForm.value); 
-    console.log( "this.productForm.controls" + this.productForm.controls);  
-    console.log("this.productForm.get(recipients)" + this.productForm.get("recipients"));  
 
 if(strLogIn == "" || strPass == ""){
 
@@ -164,8 +171,10 @@ if(strLogIn == "" || strPass == ""){
 }
 else{
 
-  if(this.productForm.value.recipients.length == 0){
+  if(this.productForm.value.recipients.length === 0){
     alert("Please Add Recipient");
+    disableButton('addButton');
+    return;
   }
   else{
   if(this.message.Code){
@@ -190,6 +199,7 @@ else if(this.message){
 
 if(this.TitleExist === false){
   alert("Please Type The Title For Survey");
+  disableButton('addButton');
         return;
 }
 else{
@@ -197,76 +207,67 @@ else{
   this.TitleExist = !this.TitleExist;
 
 
-  this.progressValues = 100 / this.productForm.value.recipients.length;
 
     Object.keys(this.productForm.controls).forEach(key => {
        
           if(key === "recipients"){
           
-
             const recipients7 =this.productForm.value.recipients;
 
-
-
             for(let i=0; i<recipients7.length; i++){
-              console.log("(recipients7[i] " + recipients7[i].qty); //use i instead of 0
-
-             // if message surveyID empty not saved than
-            if(this.message.SurveyId){
-
-            }
-            else{
-              this.message.SurveyId = this.CreatedSurveyId;
-            }
 
 
+              // Get Array Visu
+              this.arrayRecipient = recipients7[i].qty.split(','); 
 
+                for(let ArrayRecipientRepeat =0; ArrayRecipientRepeat< this.arrayRecipient.length; ArrayRecipientRepeat++){
+              
+              // if message surveyID empty not saved than
+              if(this.message.SurveyId){
+              }
+              else{
+                this.message.SurveyId = this.CreatedSurveyId;
+              }
+              if(this.message.Code){
+                  var val = 
+                  {
+                    Email:this.arrayRecipient[ArrayRecipientRepeat].qty,
+                    SurveyId: this.message.SurveyId,
+                    SurveyCode: this.message.Code,
+                    SurveyName: this.SurveyTitle,
+                    EmailLogIn: strLogIn,
+                    EmailPassword: strPass
+                  }
+              }
+              else if(this.message){
 
-            if(this.message.Code){
-                var val = 
-                {
-                  Email:recipients7[i].qty,
-                  SurveyId: this.message.SurveyId,
-                  SurveyCode: this.message.Code,
-                  SurveyName: this.SurveyTitle,
-                  EmailLogIn: strLogIn,
-                  EmailPassword: strPass
-                }
+                  this.messageCode = JSON.stringify(this.message);
 
-            }
-            else if(this.message){
-
-                this.messageCode = JSON.stringify(this.message);
-
-                 
-
-
-                var val = 
-                {
-                  Email:recipients7[i].qty,
-                  SurveyId: this.message.SurveyId,
-                  SurveyCode:  this.messageCode,
-                  SurveyName: this.SurveyTitle,
-                  EmailLogIn: strLogIn,
-                  EmailPassword: strPass
-                }
-
-        
-            }
-            else{
-                  alert("Firstly, Please Save The Survey");
-                    return;
-            }
-
-           
-            this.SendSurveyList.push(val);
+                  var val = 
+                  {
+                    Email:this.arrayRecipient[ArrayRecipientRepeat].qty,
+                    SurveyId: this.message.SurveyId,
+                    SurveyCode:  this.messageCode,
+                    SurveyName: this.SurveyTitle,
+                    EmailLogIn: strLogIn,
+                    EmailPassword: strPass
+                  }
+              }
+              else{
+                    alert("Firstly, Please Save The Survey");
+                    disableButton('addButton');
+                      return;
+              }
             
+              this.SendSurveyList.push(val);
+            }
           }
 
           this.service.addRecipient(this.SendSurveyList).subscribe(res=>{});
 
+          this.progressValues = 100 / this.arrayRecipient.length;
 
-          for(let i=0; i<recipients7.length; i++){
+          for(let i=0; i< this.arrayRecipient.length; i++){
           window.setTimeout(() => (this.loadingVal += this.progressValues), i * 500);
           }
         }

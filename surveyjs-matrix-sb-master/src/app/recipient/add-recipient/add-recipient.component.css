@@ -17,4 +17,43 @@ div.centered:nth-child(2){
 
 input.btn.btn-info {  
     margin-top: 5px;
+    background-color: white !important;
+    border-color: white !important;
 } 
+
+#Row {
+    width: 20%;
+}
+
+.Column {
+    resize:both;
+  }
+
+  .btn-primary {
+    margin: 1px;
+  
+}
+
+.labelXLSX{
+    font-size: .85em;
+}
+
+#SpanRecipients{
+    float:right;
+    width:90% !important;
+}
+
+.spanText{
+    float: left;
+    padding-top: 4px; 
+}
+
+tr td:last-child {
+    width: 1%;
+    white-space: nowrap;
+}
+
+textarea {
+    resize: none;
+    overflow: hidden;
+  }
